@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="addDebtorWindow" Height="450" Width="400">
+        Title="Add New Debtor" Height="200" Width="200">
     <Grid>
-        <WrapPanel>
-            <Label></Label>
-        </WrapPanel>
+        <StackPanel Orientation="Vertical">
+            <Label Content="_Name"></Label>
+            <TextBox Name="NameBox" Margin="5"></TextBox>
+            <Label Content="_Initial Value"></Label>
+            <TextBox Name="ValueBox" Margin="5"></TextBox>
+            <Button Content="_Save" Margin="5"></Button>
+            <Button Content="Cancel" Margin="5" ></Button>
+        </StackPanel>
     </Grid>
 </Window>
