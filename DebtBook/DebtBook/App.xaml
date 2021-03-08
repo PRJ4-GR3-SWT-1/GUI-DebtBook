@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:DebtBook"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+        <ImageBrush x:Key="BgImage" ImageSource="Images/Camou-bg.jpg"/>
          
     </Application.Resources>
 </Application>
