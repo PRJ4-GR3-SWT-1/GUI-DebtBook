@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:DebtBook"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
          
     </Application.Resources>
 </Application>
