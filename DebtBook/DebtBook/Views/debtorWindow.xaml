@@ -3,18 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DebtBook.Views" xmlns:local1="clr-namespace:DebtBook"
+        xmlns:local="clr-namespace:DebtBook.Views"
+        xmlns:debtBook="clr-namespace:DebtBook"
         mc:Ignorable="d"
         Title="debtorWindow" Height="200" Width="300">
+    <Window.DataContext>
+        <debtBook:MainWindowViewModel></debtBook:MainWindowViewModel>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid HorizontalAlignment="Left" MinHeight="100" Margin="5" VerticalAlignment="Top" MinWidth="100"/>
-        <Button Content="Close Window" Name="closeButton" Height="20" VerticalAlignment="Bottom" Width="100"></Button>
+        <DataGrid HorizontalAlignment="Left" MinHeight="100" Margin="5" VerticalAlignment="Top" MinWidth="100" ItemsSource="{Binding Path=CurrentDebtor}"/>
+        <Button Content="Close Window" Name="closeButton" Height="20" VerticalAlignment="Bottom" Width="100" Grid.ColumnSpan="2"></Button>
         <StackPanel Grid.Column="1">
-            <TextBlock> - - Add Debt: - - </TextBlock>
+            <TextBlock HorizontalAlignment="Center"> - - Add Debt: - - </TextBlock>
             <Label Content="_value"></Label>
             <TextBox Name="valueBox"></TextBox>
             <Button Content="Add" Name="addButton" Click="addButton_Click" ></Button>

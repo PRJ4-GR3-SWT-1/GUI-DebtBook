@@ -5,6 +5,8 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ImageBrush x:Key="BgImage" ImageSource="Images/Money-bg.jpg"/>
+        <ImageBrush x:Key="BgImage2" ImageSource="Images/Money2-bg.jpg"/>
+        <ImageBrush x:Key="BgImage_burning" ImageSource="Images/Money3-bg.jpg"/>
         <SolidColorBrush x:Key="Darkbg_txt" Color="White"/>
 
         <Style x:Key="Btns" TargetType="{x:Type Button}">
@@ -36,6 +38,15 @@
                     </Setter>
                 </Trigger>
             </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Labels" TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="5"/>
+                </Setter.Value>
+            </Setter>
         </Style>
 
     </Application.Resources>
