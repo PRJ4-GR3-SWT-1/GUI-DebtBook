@@ -4,7 +4,39 @@
              xmlns:local="clr-namespace:DebtBook"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ImageBrush x:Key="BgImage" ImageSource="Images/Camou-bg.jpg"/>
-         
+        <ImageBrush x:Key="BgImage" ImageSource="Images/Money-bg.jpg"/>
+        <SolidColorBrush x:Key="Darkbg_txt" Color="White"/>
+
+        <Style x:Key="Btns" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="DarkSeaGreen"/>
+            <Setter Property="FontWeight" Value="UltraBold"/>
+            <Style.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect ShadowDepth="2"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Menus" TargetType="{x:Type Menu}">
+            <Setter Property="Background" Value="DarkSeaGreen"/>
+        </Style>
+
+        <Style x:Key="MenuItems" TargetType="{x:Type MenuItem}">
+            <Setter Property="Background" Value="DarkSeaGreen"/>
+            <Style.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect ShadowDepth="2"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Application.Resources>
 </Application>
