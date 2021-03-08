@@ -8,5 +8,6 @@ namespace DebtBook.Models
 {
     class Debtor
     {
+
     }
 }
