@@ -11,6 +11,7 @@ namespace DebtBook
     public class MainWindowViewModel
     {
         public ObservableCollection<Debtor> debtors { get; set; }
+        public Debtor CurrentDebtor { get; set; }
 
         public MainWindowViewModel()
         {
@@ -18,6 +19,7 @@ namespace DebtBook
             debtors.Add(new Debtor("Søren"));
             debtors.Add(new Debtor("Peter"));
             debtors.Add(new Debtor("Caroline"));
+            CurrentDebtor = debtors[0];
 
             addDummyData();
 
