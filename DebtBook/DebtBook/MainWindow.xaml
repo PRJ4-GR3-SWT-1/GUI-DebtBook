@@ -22,7 +22,7 @@
         </Menu>
         
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Debtors:" FontSize="24" Margin="10"></TextBlock>
+            <TextBlock Text="Debtors:" FontSize="24" Margin="10"  Foreground="{StaticResource Darkbg_txt}"></TextBlock>
             <ListBox MinHeight="300" Margin="10"></ListBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
