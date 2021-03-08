@@ -14,10 +14,12 @@ namespace DebtBook.Models
         public ICollection<Debt> debts;
         public string printData;
 
-        public Debtor(string NameOnDebtor)
+        public Debtor(string NameOnDebtor, double InitialValue=0)
         {
             Name = NameOnDebtor;
             debts = new List<Debt>();
+            DateTime now = DateTime.Today;
+            debts.Add(new Debt(now.ToString(),InitialValue));
         }
 
         public string Name
