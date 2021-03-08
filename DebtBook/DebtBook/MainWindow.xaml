@@ -29,7 +29,8 @@
             <ListBox MinHeight="300" Margin="10" FontSize="24" ItemsSource="{Binding Path=debtors}" DisplayMemberPath="PrintData"></ListBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Button MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50">Add</Button>
+            <Button MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50"
+                    Style="{StaticResource ResourceKey=Btns}">Add</Button>
         </StackPanel>
     </Grid>
 </Window>
