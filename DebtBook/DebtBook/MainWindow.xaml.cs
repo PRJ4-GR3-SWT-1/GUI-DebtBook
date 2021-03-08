@@ -28,15 +28,27 @@ namespace DebtBook
             DataContext = MWVM;
         }
 
-        private void addDebtorButton_Click(object sender, RoutedEventArgs e)
+        private void addDebtorButton_Click_1(object sender, RoutedEventArgs e)
         {
             addDebtorWindow window = new addDebtorWindow();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             if (window.ShowDialog() == true)
             {
-                MWVM.debtors.Add(new Debtor(window.NameBox.Text,double.Parse( window.ValueBox.Text)));
+                double amount;
+                try
+                {
+                    amount = double.Parse(window.ValueBox.Text);
+                }
+                catch ( Exception FormatException)
+                {
+                    amount = 0;
+                }
+               
+                
+                MWVM.debtors.Add(new Debtor(window.NameBox.Text,amount));
             }
         }
+
     }
 }
