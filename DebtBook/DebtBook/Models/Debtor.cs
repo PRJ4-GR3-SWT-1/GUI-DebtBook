@@ -12,6 +12,7 @@ namespace DebtBook.Models
     {
         public string name;
         public ICollection<Debt> debts;
+        public string printData;
 
         public Debtor(string NameOnDebtor)
         {
@@ -29,6 +30,15 @@ namespace DebtBook.Models
         public ICollection<Debt> Debts
         {
             get { return debts; }
+        }
+
+        public string PrintData
+        {
+            get
+            {
+                return Name +" "+ CalculateAllDebt() + " kr.";
+            }
+            set { }
         }
 
         public void AddDebt(Debt newDebt)
