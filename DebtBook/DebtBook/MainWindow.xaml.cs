@@ -33,14 +33,14 @@ namespace DebtBook
             addDebtorWindow window = new addDebtorWindow();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            if (window.ShowDialog() == true)
+            if (window.ShowDialog() == true)//Åben tilføj debtor vindue
             {
                 double amount;
                 try
                 {
                     amount = double.Parse(window.ValueBox.Text);
                 }
-                catch ( Exception FormatException)
+                catch ( Exception FormatException)//Bruger har ikke indtastet initial amount
                 {
                     amount = 0;
                 }
