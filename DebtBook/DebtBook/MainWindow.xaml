@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="DebtBook" Height="450" Width="800"
         Background="{StaticResource BgImage}">
+    <Window.DataContext>
+        <local:MainWindowViewModel></local:MainWindowViewModel>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -22,8 +25,8 @@
         </Menu>
         
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Debtors:" TextDecorations="Underline" FontSize="24" Margin="10"></TextBlock>
-            <ListBox MinHeight="300" Margin="10"></ListBox>
+            <TextBlock Text="Debtors:" TextDecorations="Underline" FontSize="24" Margin="5"></TextBlock>
+            <ListBox MinHeight="300" Margin="10" ItemsSource="{Binding Path=debtors}"></ListBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <Button MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50">Add</Button>
