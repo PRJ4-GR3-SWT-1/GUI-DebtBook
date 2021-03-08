@@ -118,5 +118,8 @@
   <ItemGroup>
     <Folder Include="Utility\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Camou-bg.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
