@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="Add New Debtor" Height="200" Width="200">
+        Title="Add New Debtor" Height="200" Width="200"
+        Background="{StaticResource BgImage2}">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Label Content="_Name"></Label>
+            <Label Content="_Name" Style="{StaticResource ResourceKey=Labels}"/>
             <TextBox Name="NameBox" Margin="5"></TextBox>
-            <Label Content="_Initial Value"></Label>
+            <Label Content="_Initial Value" Style="{StaticResource ResourceKey=Labels}"/>
             <TextBox Name="ValueBox" Margin="5"></TextBox>
             <Button Content="_Save" Margin="5"></Button>
             <Button Content="Cancel" Margin="5" ></Button>
