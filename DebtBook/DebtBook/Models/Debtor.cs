@@ -15,8 +15,8 @@ namespace DebtBook.Models
 
         public string Name
         {
-            get { return name; }
-            set { SetProperty(ref name, value); }
+            get => name;
+            set => SetProperty(ref name, value);
         }
 
 
@@ -25,19 +25,15 @@ namespace DebtBook.Models
             get { return debts; }
         }
 
-        public void AddDebt(Debt newdebt)
+        public void AddDebt(Debt newDebt)
         {
-            if(newdebt!=null)
-                Debts.Add(newdebt);
+            if(newDebt!=null)
+                Debts.Add(newDebt);
         }
 
         public double CalculateAllDebt()
         {
-            double result=0;
-            foreach (var debt in Debts)
-            {
-                result += debt.GetAmount(); 
-            }
+            return Debts.Sum(debt => debt.Amount);
         }
     }
 }
