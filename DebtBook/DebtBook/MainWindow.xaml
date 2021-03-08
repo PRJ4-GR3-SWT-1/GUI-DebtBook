@@ -7,19 +7,24 @@
         mc:Ignorable="d"
         Title="DebtBook" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ToolBar VerticalAlignment="Top" Grid.ColumnSpan="2" Height="30"></ToolBar>
-        <WrapPanel>
-            <TextBlock Text="Debtors"></TextBlock>
-        </WrapPanel>
-        <WrapPanel Grid.Column="1">
-
-        </WrapPanel>
-
-
+        <ToolBar VerticalAlignment="Top" Grid.ColumnSpan="2" MinHeight="45">
+            <Button FontSize="24" Margin="0,0,10,0">Open</Button>
+            <Button FontSize="24">Save</Button>
+        </ToolBar>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Debtors:" FontSize="24"></TextBlock>
+            <ListBox MinHeight="300" Margin="20"></ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button MinHeight="100" MinWidth="200"  HorizontalAlignment="Center" Margin="54" FontSize="50">Add</Button>
+        </StackPanel>
     </Grid>
-   
 </Window>
