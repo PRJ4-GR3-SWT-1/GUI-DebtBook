@@ -23,5 +23,7 @@ namespace DebtBook.Views
         {
             InitializeComponent();
         }
+
+       
     }
 }

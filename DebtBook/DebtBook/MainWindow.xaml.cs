@@ -20,9 +20,11 @@ namespace DebtBook
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel MWVM = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = MWVM;
         }
     }
 }

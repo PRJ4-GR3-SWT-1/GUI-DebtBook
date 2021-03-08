@@ -17,7 +17,7 @@
             <TextBlock> - - Add Debt: - - </TextBlock>
             <Label Content="_value"></Label>
             <TextBox Name="valueBox"></TextBox>
-            <Button Content="Add" Name="addButton"></Button>
+            <Button Content="Add" Name="addButton" ></Button>
             
         </StackPanel>
     </Grid>
