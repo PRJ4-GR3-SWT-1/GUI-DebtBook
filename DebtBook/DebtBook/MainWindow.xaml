@@ -29,7 +29,7 @@
             <ListBox MinHeight="300" Margin="10" ItemsSource="{Binding Path=debtors}"></ListBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Button MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50">Add</Button>
+            <Button x:Name="addDebtorButton" MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50" Click="addDebtorButton_Click">Add</Button>
         </StackPanel>
     </Grid>
 </Window>
