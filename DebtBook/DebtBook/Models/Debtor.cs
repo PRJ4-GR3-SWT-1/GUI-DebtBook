@@ -16,6 +16,7 @@ namespace DebtBook.Models
         public Debtor(string NameOnDebtor)
         {
             Name = NameOnDebtor;
+            debts = new List<Debt>();
         }
 
         public string Name
