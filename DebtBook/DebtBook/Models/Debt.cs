@@ -9,6 +9,12 @@ namespace DebtBook.Models
 {
    public class Debt : BindableBase
     {
+        public Debt(string date, double amount)
+        {
+            Date = date;
+            Amount = amount;
+        }
+
         public string Date { get; set; }
         public double Amount { get; set; }
     }

@@ -13,6 +13,11 @@ namespace DebtBook.Models
         public string name;
         public ICollection<Debt> debts;
 
+        public Debtor(string NameOnDebtor)
+        {
+            Name = NameOnDebtor;
+        }
+
         public string Name
         {
             get => name;
