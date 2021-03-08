@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DebtBook.Models;
 
 namespace DebtBook.Views
 {
@@ -24,6 +25,9 @@ namespace DebtBook.Views
             InitializeComponent();
         }
 
-       
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

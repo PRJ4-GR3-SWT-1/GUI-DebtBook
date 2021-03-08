@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DebtBook.Models;
 
 namespace DebtBook
 {
@@ -25,6 +26,17 @@ namespace DebtBook
         {
             InitializeComponent();
             DataContext = MWVM;
+        }
+
+        private void addDebtorButton_Click(object sender, RoutedEventArgs e)
+        {
+            addDebtorWindow window = new addDebtorWindow();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            if (window.ShowDialog() == true)
+            {
+                MWVM.debtors.Add(new Debtor(window.NameBox.Text,double.Parse( window.ValueBox.Text)));
+            }
         }
     }
 }
