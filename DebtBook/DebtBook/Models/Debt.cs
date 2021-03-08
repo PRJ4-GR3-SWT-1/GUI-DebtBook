@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DebtBook.Models
 {
-    class Debt
+   public class Debt
     {
+        public string Date { get; set; }
+        public double Amount { get; set; }
     }
 }
