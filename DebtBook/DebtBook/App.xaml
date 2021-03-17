@@ -40,13 +40,9 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="Labels" TargetType="Label">
+        <Style x:Key="LabelsStyle" TargetType="Label">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect ShadowDepth="5"/>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
         </Style>
 
     </Application.Resources>

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:DebtBook.Views"
         xmlns:debtBook="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="debtorWindow" Height="200" Width="300">
+        Title="debtorWindow" Height="200" Width="300"
+        Background="{StaticResource BgImage_burning}">
     <Window.DataContext>
         <debtBook:MainWindowViewModel></debtBook:MainWindowViewModel>
     </Window.DataContext>
@@ -15,13 +16,32 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Name="DataGridWithDebts" HorizontalAlignment="Left" MinHeight="100" Margin="5" VerticalAlignment="Top" MinWidth="100" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=CurrentDebtor.Debts}"/>
-        <Button Content="Close Window" Name="closeButton" Height="20" VerticalAlignment="Bottom" Width="100" Grid.ColumnSpan="2" IsCancel="True"></Button>
+        <DataGrid Name="DataGridWithDebts" 
+                  HorizontalAlignment="Left" 
+                  MinHeight="100" 
+                  Margin="5" 
+                  VerticalAlignment="Top" 
+                  MinWidth="100" 
+                  ItemsSource="{Binding Path=CurrentDebtor.debts}" 
+                  IsSynchronizedWithCurrentItem="True"/>
+        <Button Content="Close Window" 
+                Name="closeButton" 
+                Height="20" 
+                VerticalAlignment="Bottom" 
+                Width="100" 
+                Grid.ColumnSpan="2" isCancel="True"/>
         <StackPanel Grid.Column="1">
-            <TextBlock HorizontalAlignment="Center"> - - Add Debt: - - </TextBlock>
-            <Label Content="_value"></Label>
-            <TextBox Name="valueBox"></TextBox>
-            <Button Content="Add" Name="addButton" IsDefault="True" Click="addButton_Click" ></Button>
+            <TextBlock HorizontalAlignment="Center" 
+                       Foreground="White">
+                 - - Add Debt: - -
+            </TextBlock>
+            <Label Content="_value" 
+                   Style="{StaticResource LabelsStyle}"/>
+            <TextBox Name="valueBox"/>
+            <Button Content="Add" 
+                    Name="addButton" 
+                    Click="addButton_Click" 
+                    Margin="0,5" IsDefault="True"/>
             
         </StackPanel>
     </Grid>
