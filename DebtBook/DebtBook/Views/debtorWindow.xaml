@@ -16,7 +16,8 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid HorizontalAlignment="Left" 
+        <DataGrid Name="DataGridWithDebts" 
+                  HorizontalAlignment="Left" 
                   MinHeight="100" 
                   Margin="5" 
                   VerticalAlignment="Top" 
@@ -39,7 +40,7 @@
             <Button Content="Add" 
                     Name="addButton" 
                     Click="addButton_Click" 
-                    Margin="0,5"></Button>
+                    Margin="0,5"/>
             
         </StackPanel>
     </Grid>
