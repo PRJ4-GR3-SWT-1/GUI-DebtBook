@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DebtBook.Models;
+using DebtBook.Views;
 
 namespace DebtBook
 {
@@ -50,5 +51,17 @@ namespace DebtBook
             }
         }
 
+        private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            debtorWindow window = new debtorWindow();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.DataGridWithDebts.ItemsSource = MWVM.CurrentDebtor.debts;
+
+            if (window.ShowDialog() == true)
+            {
+
+
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid HorizontalAlignment="Left" MinHeight="100" Margin="5" VerticalAlignment="Top" MinWidth="100" ItemsSource="{Binding Path=CurrentDebtor}"/>
+        <DataGrid Name="DataGridWithDebts" HorizontalAlignment="Left" MinHeight="100" Margin="5" VerticalAlignment="Top" MinWidth="100" ItemsSource="{Binding Path=CurrentDebtor}"/>
         <Button Content="Close Window" Name="closeButton" Height="20" VerticalAlignment="Bottom" Width="100" Grid.ColumnSpan="2"></Button>
         <StackPanel Grid.Column="1">
             <TextBlock HorizontalAlignment="Center"> - - Add Debt: - - </TextBlock>
