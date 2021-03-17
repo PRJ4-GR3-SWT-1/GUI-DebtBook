@@ -21,7 +21,7 @@ namespace DebtBook.Models
         }
         public Debtor(string NameOnDebtor, double InitialValue=0)
         {
-            Name = NameOnDebtor;
+            Name = NameOnDebtor ?? "Ukendt";
             debts = new List<Debt>();
             if (InitialValue != 0)
             {
