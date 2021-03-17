@@ -74,55 +74,7 @@ namespace DebtBook
                 }*/
             }
         }
-        private void SaveButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            string[] listOfNames = new string[MWVM.debtors.Count];
-            //Save all the debt:
-            int i = 0;
-            foreach (var debtor in MWVM.debtors)
-            {
-                XmlSerializer x = new XmlSerializer(typeof(List<Debt>));
-                TextWriter writer = new StreamWriter(@"DebtorSaveFile" + i+".xml");
-                x.Serialize(writer, debtor.debts);
-                listOfNames[i] = debtor.name;
-                i++;
-            }
-            //Save names of persons:
-            XmlSerializer nX = new XmlSerializer(typeof(string[]));
-            TextWriter NameWriter = new StreamWriter(@"DebtorNames.xml");
-            nX.Serialize(NameWriter, listOfNames);
-            NameWriter.Dispose();
 
-            MessageBox.Show("Data is saved in DebtorSaveFileN.xml");
-        }
-
-        private void OpenButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            //Pull out names:
-            XmlSerializer nameSerializer = new XmlSerializer(typeof(string[]));
-
-            FileStream nfs = new FileStream(@"DebtorNames.xml", FileMode.Open);
-            string[] listOfNames = (string[])nameSerializer.Deserialize(nfs);
-            //Read debt:
-            MWVM.debtors.Clear();
-            bool fileExists = File.Exists("DebtorSaveFile0.xml");
-            int i = 0;
-            while (fileExists)
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Debt>));
-
-                FileStream fs = new FileStream(@"DebtorSaveFile" + i + ".xml", FileMode.Open);
-                MWVM.debtors.Add(new Debtor(listOfNames[i]));
-
-                MWVM.debtors[i].debts = (List<Debt>)serializer.Deserialize(fs);
-                i++;
-                fileExists = File.Exists("DebtorSaveFile"+i+".xml");
-            }
-
-            
-
-        }
 
         
     }

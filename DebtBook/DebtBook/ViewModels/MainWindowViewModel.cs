@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Xml.Serialization;
 using DebtBook.Models;
+using Prism.Commands;
 
 namespace DebtBook
 {
@@ -46,6 +50,77 @@ namespace DebtBook
             debtors[2].AddDebt(new Debt("2/9/2020", 10));
             debtors[2].AddDebt(new Debt("5/9/2020", 9));
         }
+
         #endregion
+
+        /// COMMANDS:
+        ///
+        ///
+        /// 
+
+
+        private DelegateCommand saveCommand;
+
+        public DelegateCommand SaveCommand
+        {
+            get { return saveCommand ?? (saveCommand = new DelegateCommand(SaveCommandHandler)); }
+        }
+
+        void SaveCommandHandler()
+        {
+            string[] listOfNames = new string[debtors.Count];
+            //Save all the debt:
+            int i = 0;
+            foreach (var debtor in debtors)
+            {
+                XmlSerializer x = new XmlSerializer(typeof(List<Debt>));
+                TextWriter writer = new StreamWriter(@"DebtorSaveFile" + i + ".xml");
+                x.Serialize(writer, debtor.debts);
+                listOfNames[i] = debtor.name;
+                i++;
+            }
+
+            //Save names of persons:
+            XmlSerializer nX = new XmlSerializer(typeof(string[]));
+            TextWriter NameWriter = new StreamWriter(@"DebtorNames.xml");
+            nX.Serialize(NameWriter, listOfNames);
+            NameWriter.Dispose();
+
+            MessageBox.Show("Data is saved in DebtorSaveFileN.xml");
+        }
+
+        private DelegateCommand loadCommand;
+
+        public DelegateCommand LoadCommand
+        {
+            get { return loadCommand ?? (loadCommand = new DelegateCommand(LoadCommandHandler)); }
+        }
+
+        void LoadCommandHandler()
+        {
+
+            //Pull out names:
+            XmlSerializer nameSerializer = new XmlSerializer(typeof(string[]));
+
+            FileStream nfs = new FileStream(@"DebtorNames.xml", FileMode.Open);
+            string[] listOfNames = (string[]) nameSerializer.Deserialize(nfs);
+            //Read debt:
+            debtors.Clear();
+            bool fileExists = File.Exists("DebtorSaveFile0.xml");
+            int i = 0;
+            while (fileExists)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Debt>));
+
+                FileStream fs = new FileStream(@"DebtorSaveFile" + i + ".xml", FileMode.Open);
+                debtors.Add(new Debtor(listOfNames[i]));
+
+                debtors[i].debts = (List<Debt>) serializer.Deserialize(fs);
+                i++;
+                fileExists = File.Exists("DebtorSaveFile" + i + ".xml");
+            }
+        }
     }
+
+
 }
