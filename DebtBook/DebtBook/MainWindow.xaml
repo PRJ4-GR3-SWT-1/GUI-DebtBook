@@ -20,8 +20,8 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Menu Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=Menus}">
-            <MenuItem Header="Open" FontSize="24" Style="{StaticResource ResourceKey=MenuItems}"></MenuItem>
-            <MenuItem Header="Save" FontSize="24" Style="{StaticResource ResourceKey=MenuItems}"></MenuItem>
+            <MenuItem x:Name="OpenButton" Header="Open" FontSize="24" Style="{StaticResource ResourceKey=MenuItems}" Click="OpenButton_Click"></MenuItem>
+            <MenuItem x:Name="SaveButton" Header="Save" FontSize="24" Style="{StaticResource ResourceKey=MenuItems}" Click="SaveButton_Click_1"></MenuItem>
         </Menu>
         
         <StackPanel Grid.Row="1">

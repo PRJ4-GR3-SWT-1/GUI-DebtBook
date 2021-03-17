@@ -14,6 +14,11 @@ namespace DebtBook.Models
         public ICollection<Debt> debts;
         public string printData;
 
+        public Debtor()
+        {
+            Name = "Ukendt";
+            debts = new List<Debt>();
+        }
         public Debtor(string NameOnDebtor, double InitialValue=0)
         {
             Name = NameOnDebtor;
