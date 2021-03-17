@@ -29,9 +29,9 @@
             <ListBox MinHeight="300" Margin="10" FontSize="24" ItemsSource="{Binding Path=debtors}" DisplayMemberPath="PrintData"></ListBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Button x:Name="addDebtorButton" MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50"
-                    Style="{StaticResource ResourceKey=Btns}" Click="addDebtorButton_Click_1">Add</Button>
-            <!--<Button  MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50" Click="addDebtorButton_Click">Add</Button>-->
+            <Button MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50"
+                    Style="{StaticResource ResourceKey=Btns}">Add</Button>
+            <Button x:Name="addDebtorButton" MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50" Click="addDebtorButton_Click">Add</Button>
         </StackPanel>
     </Grid>
 </Window>
