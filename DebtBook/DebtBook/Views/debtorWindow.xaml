@@ -22,13 +22,14 @@
                   Margin="5" 
                   VerticalAlignment="Top" 
                   MinWidth="100" 
-                  ItemsSource="{Binding Path=CurrentDebtor}"/>
+                  ItemsSource="{Binding Path=CurrentDebtor.debts}" 
+                  IsSynchronizedWithCurrentItem="True"/>
         <Button Content="Close Window" 
                 Name="closeButton" 
                 Height="20" 
                 VerticalAlignment="Bottom" 
                 Width="100" 
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="2" isCancel="True"/>
         <StackPanel Grid.Column="1">
             <TextBlock HorizontalAlignment="Center" 
                        Foreground="White">
@@ -40,7 +41,7 @@
             <Button Content="Add" 
                     Name="addButton" 
                     Click="addButton_Click" 
-                    Margin="0,5"/>
+                    Margin="0,5" IsDefault="True"/>
             
         </StackPanel>
     </Grid>

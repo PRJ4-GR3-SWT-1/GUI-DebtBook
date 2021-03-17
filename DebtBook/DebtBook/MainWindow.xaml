@@ -26,7 +26,7 @@
         
         <StackPanel Grid.Row="1">
             <TextBlock Text="Debtors:" TextDecorations="Underline" FontSize="24" Margin="5" Foreground="{StaticResource Darkbg_txt}"></TextBlock>
-            <ListBox MinHeight="300" Margin="10" FontSize="24" ItemsSource="{Binding Path=debtors}" SelectedItem="{Binding Path=CurrentDebtor}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="PrintData" MouseDoubleClick="Control_OnMouseDoubleClick"></ListBox>
+            <ListBox MinHeight="300" Margin="10" FontSize="24" ItemsSource="{Binding Path=debtors}" SelectedItem="{Binding Path=CurrentDebtor}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="PrintData" MouseDoubleClick="debtorWindow_OnMouseDoubleClick"></ListBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <Button x:Name="addDebtorButton" MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50"
