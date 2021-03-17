@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
 using DebtBook.Models;
+using DebtBook.Views;
 
 namespace DebtBook
 {
@@ -53,6 +54,26 @@ namespace DebtBook
             }
         }
 
+        private void debtorWindow_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            debtorWindow window = new debtorWindow();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.DataContext = MWVM;
+            //MessageBox.Show(MWVM.CurrentDebtor.Name);
+            //window.DataGridWithDebts.ItemsSource = MWVM.CurrentDebtor.debts;
+
+            if (window.ShowDialog() == true)
+            {
+              /*  List<Debt> windowData = window.DataGridWithDebts.ItemsSource as List<Debt>;
+                if (MWVM.CurrentDebtor.debts.Count != windowData.Count)
+                {
+                    for (int i = MWVM.CurrentDebtor.debts.Count; i < windowData.Count; i++)
+                    {
+                        MWVM.CurrentDebtor.debts.Add(windowData[i-1]);
+                    }
+                }*/
+            }
+        }
         private void SaveButton_Click_1(object sender, RoutedEventArgs e)
         {
             int i = 0;

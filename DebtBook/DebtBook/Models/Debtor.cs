@@ -23,8 +23,11 @@ namespace DebtBook.Models
         {
             Name = NameOnDebtor;
             debts = new List<Debt>();
-            DateTime now = DateTime.Today;
-            debts.Add(new Debt(now.ToString(),InitialValue));
+            if (InitialValue != 0)
+            {
+                DateTime now = DateTime.Today;
+                debts.Add(new Debt(now.ToString(), InitialValue));
+            }
         }
 
         public string Name
