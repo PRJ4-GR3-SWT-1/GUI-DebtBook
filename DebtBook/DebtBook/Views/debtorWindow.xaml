@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DebtBook.Views"
         xmlns:debtBook="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="debtorWindow" Height="200" Width="300"
+        Title="debtorWindow" Height="200" Width="400"
         Background="{StaticResource BgImage_burning}">
     <Window.DataContext>
         <debtBook:MainWindowViewModel></debtBook:MainWindowViewModel>
@@ -24,12 +24,7 @@
                   MinWidth="100" 
                   ItemsSource="{Binding Path=CurrentDebtor.Debts}" 
                   IsSynchronizedWithCurrentItem="True"/>
-        <Button Content="Close Window" 
-                Name="closeButton" 
-                Height="20" 
-                VerticalAlignment="Bottom" 
-                Width="100" 
-                Grid.ColumnSpan="2" IsCancel="True"/>
+        
         <StackPanel Grid.Column="1">
             <TextBlock HorizontalAlignment="Center" 
                        Foreground="White">
@@ -42,6 +37,10 @@
                     Name="addButton" 
                     Click="addButton_Click" 
                     Margin="0,5" IsDefault="True"/>
+            <Button Content="Close Window" 
+                    Name="closeButton" 
+                    
+                    IsCancel="True" VerticalAlignment="Bottom"/>
             
         </StackPanel>
     </Grid>

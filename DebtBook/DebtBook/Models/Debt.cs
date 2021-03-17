@@ -9,6 +9,7 @@ namespace DebtBook.Models
 {
    public class Debt : BindableBase
     {
+        public Debt() { }
         public Debt(string date, double amount)
         {
             Date = date;
