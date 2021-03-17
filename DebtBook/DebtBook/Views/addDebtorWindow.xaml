@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="Add New Debtor" Height="200" Width="200"
+        Title="Add New Debtor" Height="200" Width="300"
         Background="{StaticResource BgImage2}">
     <Grid>
         <StackPanel Orientation="Vertical">
