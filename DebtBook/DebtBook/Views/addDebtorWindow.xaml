@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:DebtBook"
         mc:Ignorable="d"
         Title="Add New Debtor" Height="200" Width="300"
-        Background="{StaticResource BgImage2}">
+        Background="{StaticResource BgImage2}"
+        Icon="../Images/dollar.jpg">
     <Grid>
         <StackPanel Orientation="Vertical">
             <Label Content="_Name" 

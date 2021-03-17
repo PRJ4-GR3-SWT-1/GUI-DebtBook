@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:DebtBook"
         mc:Ignorable="d"
         Title="DebtBook" Height="450" Width="800"
-        Background="{StaticResource BgImage}">
+        Background="{StaticResource BgImage}"
+        Icon="Images/dollar.jpg">
     <Window.DataContext>
         <local:MainWindowViewModel></local:MainWindowViewModel>
     </Window.DataContext>
