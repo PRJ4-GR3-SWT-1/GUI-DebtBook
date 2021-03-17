@@ -33,6 +33,7 @@ namespace DebtBook.Views
             DateTime now = DateTime.Now;
             //data.Add(new Debt(now.ToString(),int.Parse(valueBox.Text)));
             context.CurrentDebtor.debts.Add(new Debt(now.ToString(), int.Parse(valueBox.Text)));
+            DataGridWithDebts.Items.Refresh();
         }
     }
 }
