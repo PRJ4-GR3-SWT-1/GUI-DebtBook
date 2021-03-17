@@ -13,8 +13,8 @@
             <TextBox Name="NameBox" Margin="5"></TextBox>
             <Label Content="_Initial Value" Style="{StaticResource ResourceKey=Labels}"/>
             <TextBox Name="ValueBox" Margin="5"></TextBox>
-            <Button x:Name="saveButton" Content="_Save" Margin="5" Click="saveButton_Click"></Button>
-            <Button x:Name="cancelButton" Content="Cancel" Margin="5" Click="cancelButton_Click" ></Button>
+            <Button x:Name="saveButton" Content="_Save" IsDefault="True" Margin="5" Click="saveButton_Click"></Button>
+            <Button x:Name="cancelButton" Content="Cancel" IsCancel="True" Margin="5" Click="cancelButton_Click" ></Button>
         </StackPanel>
     </Grid>
 </Window>
