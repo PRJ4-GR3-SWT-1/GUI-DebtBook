@@ -28,12 +28,20 @@ namespace DebtBook.Views
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindowViewModel context = System.Windows.Application.Current.MainWindow.DataContext as MainWindowViewModel;
-            //List<Debt> data = DataGridWithDebts.ItemsSource as List<Debt>;
-            DateTime now = DateTime.Now;
-            //data.Add(new Debt(now.ToString(),int.Parse(valueBox.Text)));
-            context.CurrentDebtor.debts.Add(new Debt(now.ToString(), int.Parse(valueBox.Text)));
-            DataGridWithDebts.Items.Refresh();
+            try
+            {
+                MainWindowViewModel context =
+                    System.Windows.Application.Current.MainWindow.DataContext as MainWindowViewModel;
+                //List<Debt> data = DataGridWithDebts.ItemsSource as List<Debt>;
+                DateTime now = DateTime.Now;
+                //data.Add(new Debt(now.ToString(),int.Parse(valueBox.Text)));
+                context.CurrentDebtor.AddDebt(new Debt(now.ToString(), int.Parse(valueBox.Text)));
+                DataGridWithDebts.Items.Refresh();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Invalid value. Use numbers");
+            }
         }
     }
 }

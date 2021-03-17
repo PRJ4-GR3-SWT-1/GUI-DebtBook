@@ -61,14 +61,15 @@ namespace DebtBook
 
             if (window.ShowDialog() == true)
             {
-              /*  List<Debt> windowData = window.DataGridWithDebts.ItemsSource as List<Debt>;
-                if (MWVM.CurrentDebtor.debts.Count != windowData.Count)
-                {
-                    for (int i = MWVM.CurrentDebtor.debts.Count; i < windowData.Count; i++)
-                    {
-                        MWVM.CurrentDebtor.debts.Add(windowData[i-1]);
-                    }
-                }*/
+                //DebtorsLstBx.UpdateLayout();
+                /*  List<Debt> windowData = window.DataGridWithDebts.ItemsSource as List<Debt>;
+                  if (MWVM.CurrentDebtor.debts.Count != windowData.Count)
+                  {
+                      for (int i = MWVM.CurrentDebtor.debts.Count; i < windowData.Count; i++)
+                      {
+                          MWVM.CurrentDebtor.debts.Add(windowData[i-1]);
+                      }
+                  }*/
             }
         }
     }
