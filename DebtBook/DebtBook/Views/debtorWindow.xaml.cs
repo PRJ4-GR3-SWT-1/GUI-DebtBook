@@ -34,8 +34,9 @@ namespace DebtBook.Views
                     System.Windows.Application.Current.MainWindow.DataContext as MainWindowViewModel;
                 //List<Debt> data = DataGridWithDebts.ItemsSource as List<Debt>;
                 DateTime now = DateTime.Today;
+                string[] date = now.ToString().Split(' ');
                 //data.Add(new Debt(now.ToString(),int.Parse(valueBox.Text)));
-                context.CurrentDebtor.AddDebt(new Debt(now.ToString(), int.Parse(valueBox.Text)));
+                context.CurrentDebtor.AddDebt(new Debt(date[0], int.Parse(valueBox.Text)));
                 DataGridWithDebts.Items.Refresh();
             }
             catch (Exception exception)

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Prism.Mvvm;
@@ -13,6 +15,35 @@ namespace DebtBook.Models
         public string name;
         public ICollection<Debt> debts;
         public string printData;
+        public double totaldebt;
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void Notify([CallerMemberName] string total = null)
+        {
+            PropertyChanged?.Invoke(
+                this,
+                new PropertyChangedEventArgs(total));
+        }
+
+        public double Totaldebt
+        {
+            get
+            {
+                return CalculateAllDebt();
+            }
+            set
+            {
+                if (this.totaldebt == CalculateAllDebt())
+                {
+                    return;}
+
+                this.totaldebt = CalculateAllDebt();
+                Notify();
+
+            }
+        }
 
         public Debtor()
         {

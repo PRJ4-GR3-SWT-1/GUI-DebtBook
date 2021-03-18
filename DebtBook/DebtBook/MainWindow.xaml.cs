@@ -44,6 +44,8 @@ namespace DebtBook
 
             if (window.ShowDialog() == true)
             {
+
+              
                 //DebtorsLstBx.UpdateLayout();
                 /*  List<Debt> windowData = window.DataGridWithDebts.ItemsSource as List<Debt>;
                   if (MWVM.CurrentDebtor.debts.Count != windowData.Count)
@@ -53,7 +55,7 @@ namespace DebtBook
                           MWVM.CurrentDebtor.debts.Add(windowData[i-1]);
                       }
                   }*/
-            }
+            }  MWVM.CurrentDebtor.Totaldebt=0;
         }
 
 
