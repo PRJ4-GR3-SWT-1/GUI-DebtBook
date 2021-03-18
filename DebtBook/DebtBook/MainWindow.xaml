@@ -48,7 +48,7 @@
                         Binding="{Binding Name}" 
                         MinWidth="100"/>
                     <DataGridTextColumn 
-                        Header="Debt" 
+                        Header="Debt [Kr.]" 
                         Binding="{Binding Path=Totaldebt}"
                         MinWidth="100"/>
                 </DataGrid.Columns>

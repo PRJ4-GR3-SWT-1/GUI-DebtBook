@@ -11,10 +11,11 @@ using System.Xml.Serialization;
 using DebtBook.Models;
 using DebtBook.Views;
 using Prism.Commands;
+using Prism.Mvvm;
 
 namespace DebtBook
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : DependencyObject
     {
         public ObservableCollection<Debtor> debtors { get; set; }
         public Debtor CurrentDebtor { get; set; }
@@ -191,13 +192,14 @@ namespace DebtBook
             }
         }
 
+        private debtorWindow debtorWindow;
         void OpenDebtorWindowCommandHandler()
         {
-            debtorWindow window = new debtorWindow();
-            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            window.DataContext = this;
+            debtorWindow = new debtorWindow();
+            debtorWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            debtorWindow.DataContext = this;
 
-            if (window.ShowDialog() == true)
+            if (debtorWindow.ShowDialog() == true)
             {
                 // All data is added instantly, Therefore there are no OK button. 
                 // The code herein will never be run.
@@ -205,9 +207,37 @@ namespace DebtBook
             CurrentDebtor.Totaldebt = 0;
         }
 
+        private DelegateCommand _addDebtCommand;
 
-    #endregion
-}
+        public DelegateCommand AddDebtCommand
+        {
+            get
+            {
+                return _addDebtCommand ??
+                       (_addDebtCommand = new DelegateCommand(AddDebtCommandHandler));
+            }
+        }
+
+        void AddDebtCommandHandler()
+        {
+            try
+            {
+                DateTime now = DateTime.Today;
+                string[] date = now.ToString().Split(' ');
+                CurrentDebtor.AddDebt(new Debt(date[0], int.Parse(debtorWindow.valueBox.Text)));
+                debtorWindow.DataGridWithDebts.Items.Refresh();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Invalid value. Use numbers");
+            }
+        }
+
+
+
+
+        #endregion
+    }
 
 
 }
