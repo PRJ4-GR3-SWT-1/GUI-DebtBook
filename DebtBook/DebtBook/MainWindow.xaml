@@ -31,6 +31,7 @@
                        Foreground="{StaticResource Darkbg_txt}"></TextBlock>
             <DataGrid Name="DebtorsLstBx" 
                       Margin="10"
+                      MaxHeight="300"
                       IsReadOnly="True"
                       FontSize="24" 
                       ItemsSource="{Binding Path=debtors,UpdateSourceTrigger=PropertyChanged}" 
