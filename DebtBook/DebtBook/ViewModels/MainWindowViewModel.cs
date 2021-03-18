@@ -176,8 +176,8 @@ namespace DebtBook
         {
             window.DialogResult = false;
         }
-    }
-        }
+    
+       
 
         private DelegateCommand _openDebtorWindowCommand;
 
@@ -205,8 +205,8 @@ namespace DebtBook
         }
 
 
-        #endregion
-    }
+    #endregion
+}
 
 
 }
