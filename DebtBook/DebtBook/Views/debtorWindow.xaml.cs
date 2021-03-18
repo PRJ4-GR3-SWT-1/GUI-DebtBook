@@ -33,7 +33,7 @@ namespace DebtBook.Views
                 MainWindowViewModel context =
                     System.Windows.Application.Current.MainWindow.DataContext as MainWindowViewModel;
                 //List<Debt> data = DataGridWithDebts.ItemsSource as List<Debt>;
-                DateTime now = DateTime.Now;
+                DateTime now = DateTime.Today;
                 //data.Add(new Debt(now.ToString(),int.Parse(valueBox.Text)));
                 context.CurrentDebtor.AddDebt(new Debt(now.ToString(), int.Parse(valueBox.Text)));
                 DataGridWithDebts.Items.Refresh();
