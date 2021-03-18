@@ -26,8 +26,32 @@
         </Menu>
         
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Debtors:" TextDecorations="Underline" FontSize="24" Margin="5" Foreground="{StaticResource Darkbg_txt}"></TextBlock>
-            <ListBox Name="DebtorsLstBx" MinHeight="300" Margin="10" FontSize="24" ItemsSource="{Binding Path=debtors,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=CurrentDebtor}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="PrintData" MouseDoubleClick="debtorWindow_OnMouseDoubleClick"></ListBox>
+            <TextBlock Text="Debtors:" TextDecorations="Underline" 
+                       FontSize="24" Margin="5" 
+                       Foreground="{StaticResource Darkbg_txt}"></TextBlock>
+            <DataGrid Name="DebtorsLstBx" 
+                      Margin="10"
+                      IsReadOnly="True"
+                      FontSize="24" 
+                      ItemsSource="{Binding Path=debtors,UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedItem="{Binding Path=CurrentDebtor}" 
+                      IsSynchronizedWithCurrentItem="True" 
+                      DisplayMemberPath="CalculateAllDebt" 
+                      MouseDoubleClick="debtorWindow_OnMouseDoubleClick"
+                      AutoGenerateColumns="False"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Header="Name" 
+                        Binding="{Binding Name}" 
+                        MinWidth="100"/>
+                    <DataGridTextColumn 
+                        Header="Debt" 
+                        Binding="{Binding Path=Totaldebt}"
+                        MinWidth="100"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <Button x:Name="addDebtorButton" MinHeight="70" MinWidth="200"  HorizontalAlignment="Center" Margin="55" FontSize="50"
