@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook.Views"
+        xmlns:TEST="clr-namespace:DebtBook.ViewModels"
         xmlns:debtBook="clr-namespace:DebtBook"
         mc:Ignorable="d"
         Title="{Binding Path=CurrentDebtor.Name}" Height="200" Width="400"
@@ -46,7 +47,8 @@
             <Button Content="Close Window" 
                     Name="closeButton" 
                     
-                    IsCancel="True" VerticalAlignment="Bottom"/>
+                    IsCancel="True" VerticalAlignment="Bottom"
+                    Command="{Binding Path=CloseAppCommand}"/>
 
         </StackPanel>
     </Grid>

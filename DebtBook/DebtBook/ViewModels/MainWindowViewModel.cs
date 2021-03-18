@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Xml.Serialization;
 using DebtBook.Models;
 using DebtBook.Views;
@@ -119,6 +120,7 @@ namespace DebtBook
         }
 
         private DelegateCommand addDebtorCommand;
+        public static readonly DependencyProperty DebtorWindowViewModelProperty = DependencyProperty.Register("DebtorWindowViewModel", typeof(object), typeof(MainWindowViewModel), new PropertyMetadata(default(object)));
 
         public DelegateCommand AddDebtorCommand
         {
