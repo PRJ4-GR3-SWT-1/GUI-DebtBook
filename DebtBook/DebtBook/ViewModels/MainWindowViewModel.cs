@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Serialization;
 using DebtBook.Models;
-using DebtBook.ViewModels;
 using DebtBook.Views;
 using Prism.Commands;
 
