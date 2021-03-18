@@ -38,7 +38,7 @@
                       IsSynchronizedWithCurrentItem="True" 
                       DisplayMemberPath="CalculateAllDebt" 
                       MouseDoubleClick="debtorWindow_OnMouseDoubleClick"
-                      AutoGenerateColumns="False"
+                      AutoGenerateColumns="False" 
                       >
                 <DataGrid.Columns>
                     <DataGridTextColumn

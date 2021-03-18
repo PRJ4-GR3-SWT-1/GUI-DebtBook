@@ -6,8 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Xml.Serialization;
 using DebtBook.Models;
+using DebtBook.ViewModels;
+using DebtBook.Views;
 using Prism.Commands;
 
 namespace DebtBook
@@ -122,11 +125,18 @@ namespace DebtBook
         }
 
         private DelegateCommand addDebtorCommand;
+        public static readonly DependencyProperty DebtorWindowViewModelProperty = DependencyProperty.Register("DebtorWindowViewModel", typeof(object), typeof(MainWindowViewModel), new PropertyMetadata(default(object)));
 
         public DelegateCommand AddDebtorCommand
         {
             get { return addDebtorCommand ?? (addDebtorCommand = new DelegateCommand(AddDebtorCommandHandler)); }
         }
+
+        //public object DebtorWindowViewModel
+        //{
+        //    get { return (object) GetValue(DebtorWindowViewModelProperty); }
+        //    set { SetValue(DebtorWindowViewModelProperty, value); }
+        //}
 
         void AddDebtorCommandHandler()
         {
@@ -150,7 +160,94 @@ namespace DebtBook
                 debtors.Add(new Debtor(window.NameBox.Text, amount));
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #region Commands DebtorInfo
+
+
+
+        ICommand closeWindowCommand;
+        public ICommand CloseAppCommand
+        {
+            get
+            {
+                return closeWindowCommand ?? (closeWindowCommand = new DelegateCommand(() =>
+                {
+                    App.Current.MainWindow.Close();
+                }));
+            }
+        }
+
+        ICommand addCommand;
+
+        public ICommand AddCommand
+        {
+            get
+            {
+                return addCommand ?? (addCommand = new DelegateCommand(() =>
+                        {
+                            var tempDebtor = CurrentDebtor.Clone();
+                            var vm = new DebtorWindowViewModel(tempDebtor);
+                            var dlg = new debtorWindow()
+                            {
+                                DataContext = vm,
+                                Owner = App.Current.MainWindow
+                            };
+                            if (dlg.ShowDialog() == true)
+                            {
+                                CurrentDebtor.Debts = tempDebtor.Debts;
+                            }
+
+                            //try
+                            //{
+
+
+
+                            //    MainWindowViewModel context =
+                            //        System.Windows.Application.Current.MainWindow.DataContext as MainWindowViewModel;
+                            //    DateTime now = DateTime.Today;
+                            //    string[] date = now.ToString().Split(' ');
+                            //    //data.Add(new Debt(now.ToString(),int.Parse(valueBox.Text)));
+                            //    context.CurrentDebtor.AddDebt(new Debt(date[0], int.Parse(valueBox.Text)));
+                            //    DataGridWithDebts.Items.Refresh();
+                            //}
+                            //catch (Exception exception)
+                            //{
+                            //    MessageBox.Show("Invalid value. Use numbers");
+                            //}
+                        }
+                    ))
+
+
+                    ;
+            }
+
+
+        }
+
+
+
+        #endregion
+
+
     }
+
+
+
+
+
+
 
 
 }

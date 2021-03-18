@@ -53,7 +53,8 @@ namespace DebtBook.Models
 
         public ICollection<Debt> Debts
         {
-            get { return debts; }
+            get => debts;
+            set => SetProperty(ref debts, value);
         }
 
         public void AddDebt(Debt newDebt)
@@ -61,6 +62,12 @@ namespace DebtBook.Models
             if(newDebt!=null)
                 Debts.Add(newDebt);
         }
+
+        public Debtor Clone()
+        {
+            return this.MemberwiseClone() as Debtor;
+        }
+
 
         public double CalculateAllDebt()
         {
