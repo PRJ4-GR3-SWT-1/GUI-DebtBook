@@ -73,6 +73,7 @@ namespace DebtBook
                 XmlSerializer x = new XmlSerializer(typeof(List<Debt>));
                 TextWriter writer = new StreamWriter(@"DebtorSaveFile" + i + ".xml");
                 x.Serialize(writer, debtor.debts);
+                writer.Dispose();
                 listOfNames[i] = debtor.name;
                 i++;
             }
@@ -81,8 +82,6 @@ namespace DebtBook
             XmlSerializer nX = new XmlSerializer(typeof(string[]));
             TextWriter NameWriter = new StreamWriter(@"DebtorNames.xml");
             nX.Serialize(NameWriter, listOfNames);
-            NameWriter.Close();
-            //NameWriter.Flush();
             NameWriter.Dispose();
 
             MessageBox.Show("Data is saved in DebtorSaveFileN.xml");
@@ -97,7 +96,12 @@ namespace DebtBook
 
         void LoadCommandHandler()
         {
-
+            bool fileExists = File.Exists("DebtorSaveFile0.xml");
+            if (!fileExists)
+            {
+                MessageBox.Show("Could not find save-file","Load error");
+                return;
+            }
             //Pull out names:
             XmlSerializer nameSerializer = new XmlSerializer(typeof(string[]));
 
@@ -105,12 +109,13 @@ namespace DebtBook
             string[] listOfNames = (string[]) nameSerializer.Deserialize(nfs);
             //Read debt:
             debtors.Clear();
-            bool fileExists = File.Exists("DebtorSaveFile0.xml");
+            
             int i = 0;
             while (fileExists)
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Debt>));
                 FileStream fs = new FileStream(@"DebtorSaveFile" + i + ".xml", FileMode.Open);
+                if (i >= listOfNames.Length) break;
                 debtors.Add(new Debtor(listOfNames[i]));
                 debtors[i].debts = (List<Debt>) serializer.Deserialize(fs);
                 fs.Dispose();
