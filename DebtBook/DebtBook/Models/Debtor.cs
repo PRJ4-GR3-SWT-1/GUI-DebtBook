@@ -40,7 +40,8 @@ namespace DebtBook.Models
             if (InitialValue != 0)
             {
                 DateTime now = DateTime.Today;
-                debts.Add(new Debt(now.ToString(), InitialValue));
+                string[] date = now.ToString().Split(' ');
+                debts.Add(new Debt(date[0], InitialValue));
             }
         }
 
