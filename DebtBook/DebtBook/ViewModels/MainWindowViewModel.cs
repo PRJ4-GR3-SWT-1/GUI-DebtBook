@@ -53,10 +53,8 @@ namespace DebtBook
 
         #endregion
 
-        /// COMMANDS:
-        ///
-        ///
-        /// 
+        /// 🔽🔽🔽COMMANDS🔽🔽🔽:
+  
 
 
         private DelegateCommand saveCommand;
