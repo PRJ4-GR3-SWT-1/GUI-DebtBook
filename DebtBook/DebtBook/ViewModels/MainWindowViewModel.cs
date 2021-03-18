@@ -84,6 +84,8 @@ namespace DebtBook
             XmlSerializer nX = new XmlSerializer(typeof(string[]));
             TextWriter NameWriter = new StreamWriter(@"DebtorNames.xml");
             nX.Serialize(NameWriter, listOfNames);
+            NameWriter.Close();
+            NameWriter.Flush();
             NameWriter.Dispose();
 
             MessageBox.Show("Data is saved in DebtorSaveFileN.xml");
@@ -111,14 +113,14 @@ namespace DebtBook
             while (fileExists)
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Debt>));
-
                 FileStream fs = new FileStream(@"DebtorSaveFile" + i + ".xml", FileMode.Open);
                 debtors.Add(new Debtor(listOfNames[i]));
-
                 debtors[i].debts = (List<Debt>) serializer.Deserialize(fs);
+                fs.Dispose();
                 i++;
                 fileExists = File.Exists("DebtorSaveFile" + i + ".xml");
             }
+            nfs.Dispose();
         }
     }
 
