@@ -14,18 +14,7 @@ namespace DebtBook.Models
     {
         public string name;
         public ICollection<Debt> debts;
-        public string printData;
         public double totaldebt;
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void Notify([CallerMemberName] string total = null)
-        {
-            PropertyChanged?.Invoke(
-                this,
-                new PropertyChangedEventArgs(total));
-        }
 
         public double Totaldebt
         {
@@ -35,13 +24,7 @@ namespace DebtBook.Models
             }
             set
             {
-                if (this.totaldebt == CalculateAllDebt())
-                {
-                    return;}
-
-                this.totaldebt = CalculateAllDebt();
-                Notify();
-
+                SetProperty(ref totaldebt,CalculateAllDebt());
             }
         }
 
@@ -71,15 +54,6 @@ namespace DebtBook.Models
         public ICollection<Debt> Debts
         {
             get { return debts; }
-        }
-
-        public string PrintData
-        {
-            get
-            {
-                return Name +" "+ CalculateAllDebt() + " kr.";
-            }
-            set { }
         }
 
         public void AddDebt(Debt newDebt)
