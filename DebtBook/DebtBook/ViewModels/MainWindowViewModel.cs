@@ -29,9 +29,6 @@ namespace DebtBook
             addDummyData();
         }
 
-
-
-
         #region DummyData
 
         void addDummyData()
@@ -167,8 +164,6 @@ namespace DebtBook
             debtorWindow window = new debtorWindow();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.DataContext = this;
-            //MessageBox.Show(MWVM.CurrentDebtor.Name);
-            //window.DataGridWithDebts.ItemsSource = MWVM.CurrentDebtor.debts;
 
             if (window.ShowDialog() == true)
             {
