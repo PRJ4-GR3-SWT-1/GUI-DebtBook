@@ -37,9 +37,11 @@
                       SelectedItem="{Binding Path=CurrentDebtor}" 
                       IsSynchronizedWithCurrentItem="True" 
                       DisplayMemberPath="CalculateAllDebt" 
-                      MouseDoubleClick="debtorWindow_OnMouseDoubleClick"
-                      AutoGenerateColumns="False" 
+                      AutoGenerateColumns="False"
                       >
+                <DataGrid.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=OpenDebtorWindowCommand}"></MouseBinding>
+                </DataGrid.InputBindings>
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Name" 

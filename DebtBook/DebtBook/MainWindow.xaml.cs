@@ -25,40 +25,9 @@ namespace DebtBook
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindowViewModel MWVM = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = MWVM;
         }
-
-       
-
-        private void debtorWindow_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            debtorWindow window = new debtorWindow();
-            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            window.DataContext = MWVM;
-            //MessageBox.Show(MWVM.CurrentDebtor.Name);
-            //window.DataGridWithDebts.ItemsSource = MWVM.CurrentDebtor.debts;
-
-            if (window.ShowDialog() == true)
-            {
-
-              
-                //DebtorsLstBx.UpdateLayout();
-                /*  List<Debt> windowData = window.DataGridWithDebts.ItemsSource as List<Debt>;
-                  if (MWVM.CurrentDebtor.debts.Count != windowData.Count)
-                  {
-                      for (int i = MWVM.CurrentDebtor.debts.Count; i < windowData.Count; i++)
-                      {
-                          MWVM.CurrentDebtor.debts.Add(windowData[i-1]);
-                      }
-                  }*/
-            }  MWVM.CurrentDebtor.Totaldebt=0;
-        }
-
-
-        
     }
 }

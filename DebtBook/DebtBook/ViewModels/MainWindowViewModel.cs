@@ -29,11 +29,7 @@ namespace DebtBook
             CurrentDebtor = debtors[0];
 
             addDummyData();
-
         }
-
-
-
 
         #region DummyData
 
@@ -56,9 +52,9 @@ namespace DebtBook
 
         #endregion
 
-        /// 🔽🔽🔽COMMANDS🔽🔽🔽:
-  
+        #region Commands
 
+        /// 🔽🔽🔽COMMANDS🔽🔽🔽:
 
         private DelegateCommand saveCommand;
 
@@ -86,7 +82,7 @@ namespace DebtBook
             TextWriter NameWriter = new StreamWriter(@"DebtorNames.xml");
             nX.Serialize(NameWriter, listOfNames);
             NameWriter.Close();
-            NameWriter.Flush();
+            //NameWriter.Flush();
             NameWriter.Dispose();
 
             MessageBox.Show("Data is saved in DebtorSaveFileN.xml");
@@ -132,17 +128,14 @@ namespace DebtBook
             get { return addDebtorCommand ?? (addDebtorCommand = new DelegateCommand(AddDebtorCommandHandler)); }
         }
 
-        //public object DebtorWindowViewModel
-        //{
-        //    get { return (object) GetValue(DebtorWindowViewModelProperty); }
-        //    set { SetValue(DebtorWindowViewModelProperty, value); }
-        //}
-
+        public addDebtorWindow window;
         void AddDebtorCommandHandler()
         {
-
-            addDebtorWindow window = new addDebtorWindow();
+            window = new addDebtorWindow();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.DataContext = App.Current.MainWindow.DataContext;
+            
+            
 
             if (window.ShowDialog() == true)//Åben tilføj debtor vindue
             {
@@ -161,93 +154,61 @@ namespace DebtBook
             }
         }
 
+        private DelegateCommand saveNewAgentCommand;
 
-
-
-
-
-
-
-
-
-
-
-
-        #region Commands DebtorInfo
-
-
-
-        ICommand closeWindowCommand;
-        public ICommand CloseAppCommand
+        public DelegateCommand SaveNewAgentCommand
         {
-            get
-            {
-                return closeWindowCommand ?? (closeWindowCommand = new DelegateCommand(() =>
-                {
-                    App.Current.MainWindow.Close();
-                }));
-            }
+            get { return saveNewAgentCommand ?? (saveNewAgentCommand = new DelegateCommand(SaveNewAgentCommandHandler)); }
         }
 
-        ICommand addCommand;
-
-        public ICommand AddCommand
+        void SaveNewAgentCommandHandler()//Selvom knappen er sat til IsDefault=true - lukker vinduet ikke. Derfor kommer denne kode:
         {
-            get
-            {
-                return addCommand ?? (addCommand = new DelegateCommand(() =>
-                        {
-                            var tempDebtor = CurrentDebtor.Clone();
-                            var vm = new DebtorWindowViewModel(tempDebtor);
-                            var dlg = new debtorWindow()
-                            {
-                                DataContext = vm,
-                                Owner = App.Current.MainWindow
-                            };
-                            if (dlg.ShowDialog() == true)
-                            {
-                                CurrentDebtor.Debts = tempDebtor.Debts;
-                            }
-
-                            //try
-                            //{
-
-
-
-                            //    MainWindowViewModel context =
-                            //        System.Windows.Application.Current.MainWindow.DataContext as MainWindowViewModel;
-                            //    DateTime now = DateTime.Today;
-                            //    string[] date = now.ToString().Split(' ');
-                            //    //data.Add(new Debt(now.ToString(),int.Parse(valueBox.Text)));
-                            //    context.CurrentDebtor.AddDebt(new Debt(date[0], int.Parse(valueBox.Text)));
-                            //    DataGridWithDebts.Items.Refresh();
-                            //}
-                            //catch (Exception exception)
-                            //{
-                            //    MessageBox.Show("Invalid value. Use numbers");
-                            //}
-                        }
-                    ))
-
-
-                    ;
-            }
-
-
+            window.DialogResult = true;
         }
 
 
+        private DelegateCommand cancelNewAgentCommand;
 
-        #endregion
+        public DelegateCommand CancelNewAgentCommand
+        {
+            get { return cancelNewAgentCommand ?? (cancelNewAgentCommand = new DelegateCommand(CancelNewAgentCommandHandler)); }
+        }
+
+        void CancelNewAgentCommandHandler()
+        {
+            window.DialogResult = false;
+        }
+    
+       
+
+        private DelegateCommand _openDebtorWindowCommand;
+
+        public DelegateCommand OpenDebtorWindowCommand
+        {
+            get
+            {
+                return _openDebtorWindowCommand ??
+                       (_openDebtorWindowCommand = new DelegateCommand(OpenDebtorWindowCommandHandler));
+            }
+        }
+
+        void OpenDebtorWindowCommandHandler()
+        {
+            debtorWindow window = new debtorWindow();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.DataContext = this;
+
+            if (window.ShowDialog() == true)
+            {
+                // All data is added instantly, Therefore there are no OK button. 
+                // The code herein will never be run.
+            }
+            CurrentDebtor.Totaldebt = 0;
+        }
 
 
-    }
-
-
-
-
-
-
+    #endregion
+}
 
 
 }
