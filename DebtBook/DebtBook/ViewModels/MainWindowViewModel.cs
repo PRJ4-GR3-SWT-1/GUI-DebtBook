@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Serialization;
 using DebtBook.Models;
+using DebtBook.Views;
 using Prism.Commands;
 
 namespace DebtBook
@@ -26,7 +27,6 @@ namespace DebtBook
             CurrentDebtor = debtors[0];
 
             addDummyData();
-
         }
 
 
@@ -53,9 +53,9 @@ namespace DebtBook
 
         #endregion
 
-        /// 🔽🔽🔽COMMANDS🔽🔽🔽:
-  
+        #region Commands
 
+        /// 🔽🔽🔽COMMANDS🔽🔽🔽:
 
         private DelegateCommand saveCommand;
 
@@ -150,6 +150,36 @@ namespace DebtBook
                 debtors.Add(new Debtor(window.NameBox.Text, amount));
             }
         }
+
+        private DelegateCommand _openDebtorWindowCommand;
+
+        public DelegateCommand OpenDebtorWindowCommand
+        {
+            get
+            {
+                return _openDebtorWindowCommand ??
+                       (_openDebtorWindowCommand = new DelegateCommand(OpenDebtorWindowCommandHandler));
+            }
+        }
+
+        void OpenDebtorWindowCommandHandler()
+        {
+            debtorWindow window = new debtorWindow();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.DataContext = this;
+            //MessageBox.Show(MWVM.CurrentDebtor.Name);
+            //window.DataGridWithDebts.ItemsSource = MWVM.CurrentDebtor.debts;
+
+            if (window.ShowDialog() == true)
+            {
+                // All data is added instantly, Therefore there are no OK button. 
+                // The code herein will never be run.
+            }
+            CurrentDebtor.Totaldebt = 0;
+        }
+
+
+        #endregion
     }
 
 
