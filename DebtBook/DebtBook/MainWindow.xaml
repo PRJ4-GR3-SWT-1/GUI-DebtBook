@@ -46,11 +46,11 @@
                     <DataGridTextColumn
                         Header="Name" 
                         Binding="{Binding Name}" 
-                        MinWidth="100"/>
+                        Width="2*"/>
                     <DataGridTextColumn 
                         Header="Debt [Kr.]" 
                         Binding="{Binding Path=Totaldebt}"
-                        MinWidth="100"/>
+                        Width="3*"/>
                 </DataGrid.Columns>
 
             </DataGrid>

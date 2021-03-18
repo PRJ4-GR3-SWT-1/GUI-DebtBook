@@ -139,6 +139,11 @@ namespace DebtBook
 
             if (window.ShowDialog() == true)//Åben tilføj debtor vindue
             {
+                string Name;
+                
+                Name = window.NameBox.Text;
+                if (Name == "") Name = "Ukendt";
+
                 double amount;
                 try
                 {
@@ -150,36 +155,21 @@ namespace DebtBook
                 }
 
 
-                debtors.Add(new Debtor(window.NameBox.Text, amount));
+                debtors.Add(new Debtor(Name, amount));
             }
         }
 
-        private DelegateCommand saveNewAgentCommand;
+        private DelegateCommand saveNewDebtorCommand;
 
-        public DelegateCommand SaveNewAgentCommand
+        public DelegateCommand SaveNewDebtorCommand
         {
-            get { return saveNewAgentCommand ?? (saveNewAgentCommand = new DelegateCommand(SaveNewAgentCommandHandler)); }
+            get { return saveNewDebtorCommand ?? (saveNewDebtorCommand = new DelegateCommand(SaveNewDebtorCommandHandler)); }
         }
 
-        void SaveNewAgentCommandHandler()//Selvom knappen er sat til IsDefault=true - lukker vinduet ikke. Derfor kommer denne kode:
+        void SaveNewDebtorCommandHandler()//Selvom knappen er sat til IsDefault=true - lukker vinduet ikke. Derfor kommer denne kode:
         {
             window.DialogResult = true;
         }
-
-
-        private DelegateCommand cancelNewAgentCommand;
-
-        public DelegateCommand CancelNewAgentCommand
-        {
-            get { return cancelNewAgentCommand ?? (cancelNewAgentCommand = new DelegateCommand(CancelNewAgentCommandHandler)); }
-        }
-
-        void CancelNewAgentCommandHandler()
-        {
-            window.DialogResult = false;
-        }
-    
-       
 
         private DelegateCommand _openDebtorWindowCommand;
 

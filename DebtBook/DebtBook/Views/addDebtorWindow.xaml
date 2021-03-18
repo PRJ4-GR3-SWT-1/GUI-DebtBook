@@ -24,12 +24,12 @@
                     Content="_Save" 
                     IsDefault="True" 
                     Margin="5" 
-                    Command="{Binding  Path=SaveNewAgentCommand}"></Button>
+                    Command="{Binding  Path=SaveNewDebtorCommand}"></Button>
             <Button x:Name="cancelButton" 
                     Content="Cancel" 
                     IsCancel="True" 
                     Margin="5" 
-                    Command="{Binding Path=CancelNewAgentCommand}" ></Button>
+                    ></Button>
         </StackPanel>
     </Grid>
 </Window>
