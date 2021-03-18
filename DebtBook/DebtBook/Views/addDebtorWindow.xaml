@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook"
+        xmlns:debtBook="clr-namespace:DebtBook"
         mc:Ignorable="d"
         Title="Add New Debtor" Height="200" Width="300"
         Background="{StaticResource BgImage2}"
         Icon="../Images/dollar.jpg">
+        
     <Grid>
         <StackPanel Orientation="Vertical">
             <Label Content="_Name" 
@@ -22,12 +24,12 @@
                     Content="_Save" 
                     IsDefault="True" 
                     Margin="5" 
-                    Click="saveButton_Click"></Button>
+                    Command="{Binding  Path=SaveNewAgentCommand}"></Button>
             <Button x:Name="cancelButton" 
                     Content="Cancel" 
                     IsCancel="True" 
                     Margin="5" 
-                    Click="cancelButton_Click" ></Button>
+                    Command="{Binding Path=CancelNewAgentCommand}" ></Button>
         </StackPanel>
     </Grid>
 </Window>

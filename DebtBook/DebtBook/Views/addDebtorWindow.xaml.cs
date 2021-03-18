@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DebtBook.ViewModels;
 
 namespace DebtBook
 {
@@ -19,19 +20,22 @@ namespace DebtBook
     /// </summary>
     public partial class addDebtorWindow : Window
     {
+       //private AddDebtorViewModel AddVM;
         public addDebtorWindow()
         {
             InitializeComponent();
+            //AddVM = new AddDebtorViewModel();
+            //var datacontext = App.Current.MainWindow.DataContext;
         }
 
-        private void saveButton_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
-        }
+        //private void saveButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DialogResult = true;
+        //}
 
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-        }
+        //private void cancelButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DialogResult = false;
+        //}
     }
 }

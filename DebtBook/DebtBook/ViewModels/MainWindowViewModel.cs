@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Serialization;
 using DebtBook.Models;
+using DebtBook.ViewModels;
 using Prism.Commands;
 
 namespace DebtBook
@@ -83,7 +84,7 @@ namespace DebtBook
             TextWriter NameWriter = new StreamWriter(@"DebtorNames.xml");
             nX.Serialize(NameWriter, listOfNames);
             NameWriter.Close();
-            NameWriter.Flush();
+            //NameWriter.Flush();
             NameWriter.Dispose();
 
             MessageBox.Show("Data is saved in DebtorSaveFileN.xml");
@@ -128,11 +129,14 @@ namespace DebtBook
             get { return addDebtorCommand ?? (addDebtorCommand = new DelegateCommand(AddDebtorCommandHandler)); }
         }
 
+        public addDebtorWindow window;
         void AddDebtorCommandHandler()
         {
-
-            addDebtorWindow window = new addDebtorWindow();
+            window = new addDebtorWindow();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.DataContext = App.Current.MainWindow.DataContext;
+            
+            
 
             if (window.ShowDialog() == true)//Åben tilføj debtor vindue
             {
@@ -149,6 +153,31 @@ namespace DebtBook
 
                 debtors.Add(new Debtor(window.NameBox.Text, amount));
             }
+        }
+
+        private DelegateCommand saveNewAgentCommand;
+
+        public DelegateCommand SaveNewAgentCommand
+        {
+            get { return saveNewAgentCommand ?? (saveNewAgentCommand = new DelegateCommand(SaveNewAgentCommandHandler)); }
+        }
+
+        void SaveNewAgentCommandHandler()//Selvom knappen er sat til IsDefault=true - lukker vinduet ikke. Derfor kommer denne kode:
+        {
+            window.DialogResult = true;
+        }
+
+
+        private DelegateCommand cancelNewAgentCommand;
+
+        public DelegateCommand CancelNewAgentCommand
+        {
+            get { return cancelNewAgentCommand ?? (cancelNewAgentCommand = new DelegateCommand(CancelNewAgentCommandHandler)); }
+        }
+
+        void CancelNewAgentCommandHandler()
+        {
+            window.DialogResult = false;
         }
     }
 

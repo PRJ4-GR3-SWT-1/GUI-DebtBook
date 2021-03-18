@@ -100,6 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\AddDebtorViewModel.cs" />
     <Compile Include="Views\debtorWindow.xaml.cs">
       <DependentUpon>debtorWindow.xaml</DependentUpon>
     </Compile>
